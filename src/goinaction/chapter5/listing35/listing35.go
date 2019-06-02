@@ -16,6 +16,7 @@ func main() {
 	// Write a string to the buffer.
 	b.Write([]byte("Hello"))
 
+	// 使用 Fprintf 将字符串拼接到 Buffer。b的指针类型实现了Writer接口，所以实例化Writer接口，需要传递引用。
 	// Use Fprintf to concatenate a string to the Buffer.
 	fmt.Fprintf(&b, "World!")
 

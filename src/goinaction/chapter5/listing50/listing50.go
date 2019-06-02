@@ -22,7 +22,7 @@ func (u *user) notify() {
 
 // admin represents an admin user with privileges.
 type admin struct {
-	user  // Embedded Type
+	user  // Embedded Type（嵌入类型）
 	level string
 }
 
