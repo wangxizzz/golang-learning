@@ -51,4 +51,7 @@ func main() {
 	wg.Wait()
 
 	fmt.Println("\nTerminating Program")
+	/**
+	程序的输出结果解释：参照书籍6.2节
+	*/
 }
