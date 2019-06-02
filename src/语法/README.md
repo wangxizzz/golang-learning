@@ -1,0 +1,4 @@
+- 一个简单的web服务器(读写文件)：在errhandling包下
+- 不重复子串的长度：container包下
+- 重写Read(),在functional的main.go中。
+- 对接口，实现的指针传递，可以参照retriever包下的main.go
