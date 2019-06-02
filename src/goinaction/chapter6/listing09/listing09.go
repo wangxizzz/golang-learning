@@ -40,6 +40,9 @@ func incCounter(id int) {
 		value := counter
 
 		// Yield the thread and be placed back in queue.
+		//用于将 goroutine 从当前线程退出，
+		// 给其他 goroutine 运行的机会。在两次操作中间这样做的目的是强制调度器切换两个 goroutine，
+		//以便让竞争状态的效果变得更明显。
 		runtime.Gosched()
 
 		// Increment our local value of Counter.

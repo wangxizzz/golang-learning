@@ -32,7 +32,7 @@ func main() {
 
 	// Safely flag it is time to shutdown.
 	fmt.Println("Shutdown Now")
-	atomic.StoreInt64(&shutdown, 1)
+	atomic.StoreInt64(&shutdown, 1) // 只要在这里修改了，所有协程都看的到
 
 	// Wait for the goroutines to finish.
 	wg.Wait()

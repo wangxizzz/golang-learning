@@ -17,7 +17,7 @@ func main() {
 	baton := make(chan int)
 
 	// Add a count of one for the last runner.
-	wg.Add(1)
+	wg.Add(1) // 等最后一个人跑完，就结束
 
 	// First runner to his mark.
 	go Runner(baton)
@@ -43,6 +43,7 @@ func Runner(baton chan int) {
 	if runner != 4 {
 		newRunner = runner + 1
 		fmt.Printf("Runner %d To The Line\n", newRunner)
+		// 起一个协程递归调用
 		go Runner(baton)
 	}
 

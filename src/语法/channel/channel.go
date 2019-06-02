@@ -10,12 +10,13 @@ func worker(id int, c chan int) {
 		fmt.Printf("Worker %d received %c\n",
 			id, n)
 	}
-	fmt.Println("dsff")
 	// 也可以这样写，但是会打印很多空
 	//for {
 	//	fmt.Printf("Worker %d received %c\n",
 	//		id, <- c)
 	//}
+	fmt.Println("dsff")
+
 }
 
 func createWorker(id int) chan<- int { // 定义只能往里面发数据的channel
@@ -51,6 +52,7 @@ func bufferedChannel() {
 	c <- 'b'
 	c <- 'c'
 	c <- 'd'
+	close(c)
 	time.Sleep(time.Millisecond)
 }
 
@@ -66,10 +68,10 @@ func channelClose() {
 }
 
 func main() {
-	fmt.Println("Channel as first-class citizen")
-	chanDemo()
-	fmt.Println("Buffered channel")
+	//fmt.Println("Channel as first-class citizen")
+	//chanDemo()
+	//fmt.Println("Buffered channel")
 	bufferedChannel()
-	fmt.Println("Channel close and range")
-	channelClose()
+	//fmt.Println("Channel close and range")
+	//channelClose()
 }
