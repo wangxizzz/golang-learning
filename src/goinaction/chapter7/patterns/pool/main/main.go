@@ -3,14 +3,13 @@
 package main
 
 import (
+	"goinaction/chapter7/patterns/pool"
 	"io"
 	"log"
 	"math/rand"
 	"sync"
 	"sync/atomic"
 	"time"
-
-	"github.com/goinaction/code/chapter7/patterns/pool"
 )
 
 const (
@@ -87,5 +86,7 @@ func performQueries(query int, p *pool.Pool) {
 
 	// Wait to simulate a query response.
 	time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
+	log.Println("类型%T", conn)
+	// conn是一个接口，被引用实例化，返回的是引用。利用引用是取不到该类型属性的。只能通过conn.(*dbConnection).ID
 	log.Printf("Query: QID[%d] CID[%d]\n", query, conn.(*dbConnection).ID)
 }

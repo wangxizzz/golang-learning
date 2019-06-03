@@ -41,7 +41,7 @@ func New(fn func() (io.Closer, error), size uint) (*Pool, error) {
 func (p *Pool) Acquire() (io.Closer, error) {
 	select {
 	// Check for a free resource.
-	case r, ok := <-p.resources:
+	case r, ok := <-p.resources: // channel输出元素有两个返回值
 		log.Println("Acquire:", "Shared Resource")
 		if !ok {
 			return nil, ErrPoolClosed
@@ -66,13 +66,13 @@ func (p *Pool) Release(r io.Closer) {
 		r.Close()
 		return
 	}
-
 	select {
 	// Attempt to place the new resource on the queue.
 	case p.resources <- r:
 		log.Println("Release:", "In Queue")
 
 	// If the queue is already at cap we close the resource.
+	//  如果队列已满，则关闭这个资源
 	default:
 		log.Println("Release:", "Closing")
 		r.Close()

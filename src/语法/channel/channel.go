@@ -15,6 +15,10 @@ func worker(id int, c chan int) {
 	//	fmt.Printf("Worker %d received %c\n",
 	//		id, <- c)
 	//}
+	_, ok := <-c
+	if !ok {
+		fmt.Println("channel closed!")
+	}
 	fmt.Println("dsff")
 
 }
