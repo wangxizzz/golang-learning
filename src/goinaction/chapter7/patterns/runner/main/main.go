@@ -1,14 +1,16 @@
 // This sample program demonstrates how to use a channel to
 // monitor the amount of time the program is running and terminate
 // the program if it runs too long.
+// 这个示例程序演示如何使用通道来监视
+// 程序运行的时间，以在程序运行时间过长
+// 时如何终止程序
 package main
 
 import (
+	"goinaction/chapter7/patterns/runner"
 	"log"
 	"os"
 	"time"
-
-	"github.com/goinaction/code/chapter7/patterns/runner"
 )
 
 // timeout is the number of second the program has to finish.
